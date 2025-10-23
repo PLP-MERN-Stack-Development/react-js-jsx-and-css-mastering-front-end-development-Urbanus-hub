@@ -1,3 +1,6 @@
+# project - live link 
+[preview live app](https://react-plp.netlify.app/)
+
 # React Frontend — Project Documentation
 
 This repository contains a small React front-end project focusing on JSX, components, and Tailwind styling. This README documents how to run the project, developer workflow, and how the theme (dark/light) toggle works.
