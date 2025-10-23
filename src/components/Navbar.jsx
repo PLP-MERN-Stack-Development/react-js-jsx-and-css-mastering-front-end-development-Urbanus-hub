@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, Home, CheckSquare } from "lucide-react";
+import { Menu, X, Sun, Moon, Home, CheckSquare, Box } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  
+
   const navlinks = [
     { name: "Home", path: "/", icon: Home },
-    { name: "Tasks", path: "/tasks", icon: CheckSquare }
+    { name: "Tasks", path: "/tasks", icon: CheckSquare },
+    { name: "products", path: "/Products", icon: Box },
   ];
-  
+
   const handleToggle = () => {
     setOpen(!open);
   };
@@ -21,7 +23,9 @@ const Navbar = () => {
       setDarkMode(JSON.parse(savedMode));
     } else {
       // Check if user prefers dark mode
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
       setDarkMode(prefersDark);
     }
   }, []);
@@ -58,14 +62,14 @@ const Navbar = () => {
           {navlinks.map((link) => {
             const Icon = link.icon;
             return (
-              <a
+              <Link
                 key={link.name}
-                href={link.path}
+                to={link.path}
                 className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-sky-50 dark:hover:bg-gray-800 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-200"
               >
                 <Icon size={18} />
                 {link.name}
-              </a>
+              </Link>
             );
           })}
           <button
@@ -93,7 +97,11 @@ const Navbar = () => {
             aria-expanded={open}
           >
             <span className="sr-only">Toggle menu</span>
-            {open ? <X size={24} className="text-gray-700 dark:text-gray-200" /> : <Menu size={24} className="text-gray-700 dark:text-gray-200" />}
+            {open ? (
+              <X size={24} className="text-gray-700 dark:text-gray-200" />
+            ) : (
+              <Menu size={24} className="text-gray-700 dark:text-gray-200" />
+            )}
           </button>
         </div>
       </div>

@@ -2,9 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Button from "./Button";
 import { Sun, Moon, CheckCircle2, Circle, Trash2, ListTodo, Clock } from "lucide-react";
 
-/**
- * Custom hook for managing dark mode preference
- */
+
 const useDarkMode = () => {
   const [darkMode, setDarkMode] = useState(() => {
     const savedMode = localStorage.getItem("darkMode");

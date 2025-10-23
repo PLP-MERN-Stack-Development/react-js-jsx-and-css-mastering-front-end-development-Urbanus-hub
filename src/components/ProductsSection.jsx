@@ -6,10 +6,13 @@ import { Search, ChevronLeft, ChevronRight } from "lucide-react";
 const ProductSection = ({ title, products }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; // Number of products to show per page
+  const itemsPerPage = 8; 
+  const{loading,setLoading}= useState(false);
+  // Number of products to show per page
 
   // --- Search Logic ---
   const filteredProducts = useMemo(() => {
+
     if (!searchTerm) return products;
     return products.filter(
       (product) =>
@@ -142,7 +145,7 @@ const ProductSection = ({ title, products }) => {
         {paginatedProducts.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-500 dark:text-gray-400">
-              {searchTerm ? "No products found matching your search." : "No products found."}
+              {(searchTerm ? "No products found matching your search." : "products loading.....")}
             </p>
           </div>
         ) : (
